@@ -1,0 +1,22 @@
+# Rust build artifacts
+/target/
+Cargo.lock
+
+# Runtime / user data (auto-generated; config.example.toml is the tracked template)
+config.toml
+models/*.onnx
+assets/*.png
+assets/*.jpg
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
