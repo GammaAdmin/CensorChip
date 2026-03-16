@@ -10,6 +10,7 @@ pub mod censor;
 pub mod config;
 pub mod downloader;
 pub mod inference;
+pub mod ort_downloader;
 pub mod overlay;
 pub mod pipeline;
 pub mod ui;
@@ -31,6 +32,12 @@ fn main() -> Result<()> {
         .init();
 
     info!("CensorChip v{}", env!("CARGO_PKG_VERSION"));
+
+    // Ensure onnxruntime.dll is available (download if needed).
+    if let Err(e) = ort_downloader::ensure_onnxruntime() {
+        log::warn!("Failed to ensure ONNX Runtime DLL: {}", e);
+        // Continue anyway – ort crate's download-binaries will try to handle it.
+    }
 
     // Load (or create) configuration.
     let config_path = config::default_config_path();

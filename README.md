@@ -43,9 +43,14 @@ CensorChip captures your screen in real time, runs AI-based detection to identif
 
 ### Download a release
 
-Grab the latest `.zip` from the [Releases](https://github.com/GammaAdmin/CensorChip/releases) page, extract it, and run `censorchip.exe`.
+Grab the latest `.zip` from the [Releases](https://github.com/GammaAdmin/CensorChip/releases) page and extract it.
 
-`onnxruntime.dll` must be in the same folder as the executable **or** on `PATH`. Download it from the [ONNX Runtime releases page](https://github.com/microsoft/onnxruntime/releases).
+On first launch, CensorChip will automatically:
+1. Detect your system architecture (Windows x64 / ARM64)
+2. Download the appropriate `onnxruntime.dll` from the official GitHub releases
+3. Extract it to the same folder as the executable
+
+Just run `censorchip.exe` and wait for the first-launch setup to complete. All downloads use HTTPS and verify via GitHub's official release infrastructure.
 
 ### Build from source
 
@@ -54,6 +59,8 @@ Grab the latest `.zip` from the [Releases](https://github.com/GammaAdmin/CensorC
 - Rust ≥ 1.78 - install via [rustup.rs](https://rustup.rs)
 - Visual Studio Build Tools 2022 (MSVC linker)
 
+**Build steps**
+
 ```powershell
 git clone https://github.com/GammaAdmin/CensorChip.git
 cd censorchip
@@ -61,6 +68,10 @@ cargo build --release
 ```
 
 The binary will be at `target\release\censorchip.exe`.
+
+On first run, the app will automatically download `onnxruntime.dll` for your platform. No manual DLL setup needed!
+
+The app is then ready to distribute - just package `censorchip.exe` and the user downloads models in-app.
 
 ---
 
