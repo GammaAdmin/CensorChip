@@ -1,0 +1,108 @@
+# CensorChip – Default Configuration
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Copy this file to config.toml to use it. The app also auto-generates
+# config.toml with defaults on first run.
+
+[general]
+models_dir    = "models"
+selected_model = "yolov8n.onnx"
+# window_title = "Firefox"     # uncomment to capture a specific window
+
+[detection]
+# NudeNet label toggles – true = censor that region
+female_genitalia_covered  = true
+face_female               = true
+buttocks_exposed          = true
+female_breast_exposed     = true
+female_genitalia_exposed  = true
+male_breast_exposed       = false
+anus_exposed              = true
+feet_exposed              = false
+belly_covered             = false
+feet_covered              = false
+armpits_covered           = false
+armpits_exposed           = false
+face_male                 = true
+belly_exposed             = false
+male_genitalia_exposed    = true
+anus_covered              = true
+female_breast_covered     = true
+buttocks_covered          = false
+
+confidence_threshold = 0.4
+
+# ── EraX-Anti-NSFW-V1.1 label map ──────────────────────────────────────────
+# Uncomment this block when using the EraX model (see README for export steps).
+# EraX uses different class IDs than NudeNet; the app's label_config.rs maps
+# them to the detection categories above automatically when the model is selected.
+#
+# selected_model = "erax_anti_nsfw_v1.1.onnx"
+# confidence_threshold = 0.35   # EraX is more confident; lower threshold works well
+# mask_mode = "BoundingBox"
+
+[censorship]
+method       = "Blur"          # Blur | Pixelation | BlackBar | TextureOverlay | TextOverlay
+blur_radius  = 25
+pixel_size   = 12
+overlay_text = "CENSORED"
+# texture_path = "assets/custom_overlay.png"
+mask_mode    = "BoundingBox"   # BoundingBox | Segmentation
+
+[performance]
+preset              = "Balanced"  # Low | Balanced | High
+inference_skip_frames = 2
+downscale_factor      = 2
+gpu_acceleration      = false
+max_fps               = 0          # 0 = unlimited
+
+[hotkeys]
+toggle_censorship = "F9"
+pause_capture     = "F10"
+
+[general]
+models_dir    = "models"
+selected_model = "yolov8n.onnx"
+# window_title = "Firefox"     # uncomment to capture a specific window
+
+[detection]
+# NudeNet label toggles – true = censor that region
+female_genitalia_covered  = true
+face_female               = true
+buttocks_exposed          = true
+female_breast_exposed     = true
+female_genitalia_exposed  = true
+male_breast_exposed       = false
+anus_exposed              = true
+feet_exposed              = false
+belly_covered             = false
+feet_covered              = false
+armpits_covered           = false
+armpits_exposed           = false
+face_male                 = true
+belly_exposed             = false
+male_genitalia_exposed    = true
+anus_covered              = true
+female_breast_covered     = true
+buttocks_covered          = false
+
+confidence_threshold = 0.4
+
+[censorship]
+method       = "Blur"          # Blur | Pixelation | BlackBar | TextureOverlay | TextOverlay
+blur_radius  = 25
+pixel_size   = 12
+overlay_text = "CENSORED"
+# texture_path = "assets/custom_overlay.png"
+mask_mode    = "BoundingBox"   # BoundingBox | Segmentation
+
+[performance]
+preset              = "Balanced"  # Low | Balanced | High
+inference_skip_frames = 2
+downscale_factor      = 2
+gpu_acceleration      = false
+max_fps               = 0          # 0 = unlimited
+
+[hotkeys]
+toggle_censorship = "F9"
+pause_capture     = "F10"
